@@ -9,10 +9,9 @@ export default function (io) {
     });
 
     socket.on("sortear", () => {
-      const index = Math.floor(Math.random() * usuarios.length);
-      const sorteado = usuarios[index];
+      const sorteado = usuarios[Math.floor(Math.random() * usuarios.length)];
 
-      usuarios.map((usuario) => {
+      usuarios.forEach((usuario) => {
         if (usuario === sorteado) {
           io.to(usuario).emit("ganhou");
         } else {
